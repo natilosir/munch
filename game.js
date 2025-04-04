@@ -12,7 +12,6 @@ $(document).ready(function() {
         missions: {}
     };
 
-    // تابع بارگذاری ماموریت‌ها از فایل JSON
     function loadMissions() {
         return new Promise((resolve, reject) => {
             $.ajax({
