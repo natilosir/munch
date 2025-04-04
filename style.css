@@ -1,3 +1,6 @@
+@font-face{font-family:IRANSans;font-style:normal;font-weight:400;src:url(https://natilos.ir/zimage/font/is.woff) format("truetype")}
+@font-face{font-family:IRANSans;font-style:normal;font-weight:700;src:url(https://natilos.ir/zimage/font/IRANSansWeb_Bold.woff) format("truetype")}
+
 :root {
     --player1-color: #e74c3c;
     --player2-color: #3498db;
@@ -28,7 +31,7 @@
   }
   
   body {
-    font-family: 'Vazirmatn', sans-serif;
+    font-family: IRANSans;
     background: linear-gradient(135deg, #e0f7fa, #ffffff);
     min-height: 100vh;
     padding: 20px;
@@ -212,7 +215,7 @@
     display: block;
     margin: 0 auto;
     transition: all 0.3s;
-    font-family: 'Vazirmatn', sans-serif;
+    font-family:IRANSans;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
   
