@@ -1,0 +1,317 @@
+:root {
+    --player1-color: #e74c3c;
+    --player2-color: #3498db;
+    --cell-color: #b2dfdb;
+    --board-border: #00796b;
+    --mission-color: #2ecc71;
+    --log-bg: #e0f2f1;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .alert-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+  }
+  
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+  }
+  
+  .game-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #004d40;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+  }
+  
+  .game-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  #game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 60px);
+    grid-template-rows: repeat(10, 60px);
+    gap: 2px;
+    border: 4px solid var(--board-border);
+    border-radius: 12px;
+    background: var(--board-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cell {
+    width: 60px;
+    height: 60px;
+    background-color: var(--cell-color);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #004d40;
+    transition: all 0.3s ease;
+  }
+  
+  .cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cell.start {
+    background-color: #f1c40f;
+    font-weight: bold;
+  }
+  
+  .player {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10;
+  }
+  
+  .player1 {
+    background-color: var(--player1-color);
+    left: 10px;
+    top: 10px;
+  }
+  
+  .player2 {
+    background-color: var(--player2-color);
+    right: 10px;
+    bottom: 10px;
+  }
+  
+  .mission-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--mission-color);
+    border-radius: 50%;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .controls {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .player-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+  }
+  
+  .player-info > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .player-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .player1-info .player-icon {
+    background-color: var(--player1-color);
+  }
+  
+  .player2-info .player-icon {
+    background-color: var(--player2-color);
+  }
+  
+  .player-turn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .player1-turn {
+    background-color: var(--player1-color);
+    color: white;
+  }
+  
+  .player2-turn {
+    background-color: var(--player2-color);
+    color: white;
+  }
+  
+  #dice {
+    background: linear-gradient(135deg, #00796b, #004d40);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s;
+    font-family: 'Vazirmatn', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  #dice:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  #dice:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .dice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .dice {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ffffff, #e0f2f1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004d40;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .mission-display {
+    background: linear-gradient(135deg, var(--mission-color), #27ae60);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    min-height: 80px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mission-display h3 {
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 5px;
+    font-size: 1.1rem;
+  }
+  
+  .game-log {
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    margin-top: 20px;
+    background: var(--log-bg);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .game-log div {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 768px) {
+    #game-board {
+      grid-template-columns: repeat(10, 40px);
+      grid-template-rows: repeat(10, 40px);
+    }
+    
+    .cell {
+      width: 40px;
+      height: 40px;
+      font-size: 8px;
+    }
+    
+    .player {
+      width: 30px;
+      height: 30px;
+      font-size: 12px;
+    }
+    
+    .controls {
+      min-width: 100%;
+    }
+  }

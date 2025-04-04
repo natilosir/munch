@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>بازی منچ پیشرفته</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container"> 
+    <div class="game-area">
+      <div id="game-board"></div>
+      
+      <div class="controls">
+        <div class="player-info">
+          <div class="player1-info">
+            <div class="player-icon player1"><i class="fas fa-chess-pawn"></i></div>
+            <span>بازیکن 1</span>
+          </div>
+          <div class="player2-info">
+            <div class="player-icon player2"><i class="fas fa-chess-knight"></i></div>
+            <span>بازیکن 2</span>
+          </div>
+        </div>
+        
+        <div id="player-turn" class="player-turn player1-turn">
+          <i class="fas fa-user"></i> نوبت: بازیکن 1
+        </div>
+        
+        <button id="dice">
+          <i class="fas fa-dice"></i> انداختن تاس
+        </button>
+        
+        <div class="dice-container">
+          <div class="dice" id="dice-result">?</div>
+        </div>
+        
+        <div class="mission-display">
+          <h3><i class="fas fa-scroll"></i> ماموریت فعلی</h3>
+          <p id="mission-text">هنوز ماموریتی انتخاب نشده است</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="log" class="game-log"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
