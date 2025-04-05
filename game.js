@@ -136,6 +136,7 @@ $(document).ready(function() {
         
         if (gameState.missions[key]) {
             const missionText = gameState.missions[key];
+            $('#mission-popup').text(missionText).fadeIn(200).delay(9999).fadeOut(200);
             $('#mission-text').text(missionText);
             logMessage(`بازیکن ${gameState.currentPlayer}: ${missionText}`);
             
