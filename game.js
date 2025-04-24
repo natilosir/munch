@@ -15,7 +15,7 @@ $(document).ready(function() {
     function loadMissions() {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: 'missions.json',
+                url: 'missions_s1.json',
                 dataType: 'json',
                 success: function(data) {
                     resolve(data.missions);
